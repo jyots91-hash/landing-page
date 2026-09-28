@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FitOdia – The Last Reset Method | Jyoti Ranjan Naik</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #181818;
+    --border: #2a2a2a;
+    --gold: #F3CA00;
+    --gold-dim: #c9a800;
+    --white: #f5f5f5;
+    --muted: #9a9a9a;
+    --danger: #e05a5a;
+    --green: #4caf7d;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* TYPOGRAPHY */
+  h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; line-height: 1.2; }
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+  .section:last-of-type { border-bottom: none; }
+  .center { text-align: center; }
+
+  /* CTA BUTTON */
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 18px 36px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.15s;
+    text-align: center;
+    width: 100%;
+    max-width: 520px;
+    letter-spacing: 0.03em;
+  }
+  .cta-btn:hover { background: #ffe033; transform: translateY(-1px); }
+  .cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 32px; }
+  .urgency { font-size: 13px; color: var(--danger); font-weight: 600; letter-spacing: 0.02em; }
+
+  /* HERO */
+  .hero {
+    background: var(--dark);
+    padding: 56px 0 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-tag {
+    background: #1e1a00;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 20px;
+    max-width: 780px;
+  }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero-sub {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: #d0d0d0;
+    max-width: 640px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .hero-meta {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .badge {
+    background: #1c1c1c;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 3px;
+    color: var(--white);
+  }
+  .badge span { color: var(--gold); margin-right: 5px; }
+
+  /* TRANSFORMATIONS */
+  .section-title {
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 40px;
+    max-width: 560px;
+  }
+  .transforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .transform-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .transform-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    background: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .transform-img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #1a1a1a 0%, #222 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .transform-img-placeholder .icon { font-size: 32px; }
+  .transform-img-placeholder .label { font-size: 12px; color: var(--muted); }
+  .transform-body { padding: 20px; }
+  .transform-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+  .transform-highlight {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .metrics { display: flex; flex-direction: column; gap: 6px; }
+  .metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .metric:last-child { border-bottom: none; padding-bottom: 0; }
+  .metric-label { color: var(--muted); }
+  .metric-val { font-weight: 700; color: var(--green); }
+
+  /* REALITY CHECK - CONDITIONS */
+  .conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .condition-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 16px 18px;
+  }
+  .condition-name { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .condition-detail { font-size: 13px; color: var(--muted); }
+
+  /* WHAT YOU GET — 4 STEPS */
+  .steps { display: flex; flex-direction: column; gap: 32px; margin-top: 36px; }
+  .step {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .step-num {
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+  .step p { color: #c0c0c0; font-size: 15px; }
+
+  /* PRICING BOX */
+  .price-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 36px;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .price-original {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .price-main {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-note { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+
+  /* WHO IS THIS FOR */
+  .fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .fit-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+  }
+  .fit-card.yes { border-top: 3px solid var(--green); }
+  .fit-card.no { border-top: 3px solid var(--danger); }
+  .fit-card h3 { font-size: 15px; font-weight: 800; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .fit-card.yes h3 { color: var(--green); }
+  .fit-card.no h3 { color: var(--danger); }
+  .fit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .fit-list li { font-size: 14px; color: #c0c0c0; display: flex; gap: 8px; align-items: flex-start; }
+  .fit-list li::before { flex-shrink: 0; margin-top: 2px; }
+  .fit-card.yes .fit-list li::before { content: "✓"; color: var(--green); font-weight: 700; }
+  .fit-card.no .fit-list li::before { content: "✗"; color: var(--danger); font-weight: 700; }
+
+  /* INVESTMENT */
+  .investment-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 32px;
+    max-width: 520px;
+    margin: 32px auto 0;
+    text-align: center;
+  }
+  .investment-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  /* VS SECTION */
+  .vs-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    margin-top: 36px;
+    align-items: stretch;
+  }
+  .vs-col {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+  }
+  .vs-col.right { border-color: var(--gold); }
+  .vs-col h3 { font-size: 14px; font-weight: 800; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .vs-col.right h3 { color: var(--gold); }
+  .vs-sep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--gold);
+  }
+  .vs-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .vs-list li { font-size: 14px; color: #c0c0c0; display: flex; gap: 8px; align-items: flex-start; }
+  .vs-list li::before { content: "—"; color: var(--danger); flex-shrink: 0; }
+  .vs-col.right .vs-list li::before { content: "✓"; color: var(--green); }
+
+  /* COACH SECTION */
+  .coach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .coach-photo {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    aspect-ratio: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .coach-photo .icon { font-size: 48px; }
+  .coach-creds { display: flex; flex-direction: column; gap: 8px; margin: 20px 0; }
+  .cred {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .cred::before { content: "✓"; color: var(--gold); flex-shrink: 0; }
+  .coach-quote {
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+    font-style: italic;
+    color: #c0c0c0;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+
+  /* STORY */
+  .story-timeline { display: flex; flex-direction: column; gap: 32px; margin-top: 36px; }
+  .story-item { display: grid; grid-template-columns: 100px 1fr; gap: 20px; align-items: start; }
+  .story-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 4px;
+  }
+  .story-tag.before { background: #3a1a1a; color: var(--danger); }
+  .story-tag.turning { background: #2a2a00; color: var(--gold); }
+  .story-tag.after { background: #0f2a1a; color: var(--green); }
+  .story-text { font-size: 15px; color: #c0c0c0; line-height: 1.7; }
+  .story-text strong { color: var(--white); }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 20px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .faq-q::after { content: "+"; font-size: 20px; color: var(--gold); flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 14px;
+    color: #c0c0c0;
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 20px; }
+
+  /* COST OF WAITING */
+  .waiting-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 32px 0;
+  }
+  .waiting-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--danger);
+    border-radius: 4px;
+    padding: 16px;
+    font-size: 14px;
+    color: #c0c0c0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .waiting-item::before { content: "↑"; color: var(--danger); font-weight: 700; flex-shrink: 0; }
+
+  /* FINAL CTA BANNER */
+  .final-banner {
+    background: linear-gradient(135deg, #1a1500 0%, #0a0a0a 60%);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 48px 36px;
+    text-align: center;
+    margin: 64px 0 40px;
+  }
+  .final-banner h2 { font-size: clamp(22px, 4vw, 34px); font-weight: 900; margin-bottom: 16px; }
+  .final-banner p { color: #c0c0c0; max-width: 520px; margin: 0 auto 28px; font-size: 16px; }
+  .seats-counter {
+    display: inline-block;
+    background: var(--danger);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 8px 20px;
+    border-radius: 3px;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* STICKY CTA bar */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .sticky-bar .cta-btn { max-width: 360px; padding: 14px 24px; font-size: 14px; }
+  .sticky-bar .s-note { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .fit-grid { grid-template-columns: 1fr; }
+    .coach-grid { grid-template-columns: 1fr; }
+    .vs-grid { grid-template-columns: 1fr; }
+    .vs-sep { display: none; }
+    .step { grid-template-columns: 52px 1fr; }
+    .story-item { grid-template-columns: 80px 1fr; }
+    .price-main { font-size: 44px; }
+    .sticky-bar .s-note { display: none; }
+    .section { padding: 52px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">For Working Men 28+ · 80kg+</div>
+    <h1>Sitting 8–10 Hours at Work While <em>Belly Fat, Low Energy & Metabolic Issues</em> Quietly Take Over?</h1>
+    <p class="hero-sub">Book a FREE 45-Minute 1:1 Metabolic Health Assessment Call with Jyoti Ranjan Naik</p>
+    <p class="hero-meta">Fitness & Nutrition Coach · INFS Certified · 200+ Transformations · 7 Years Experience</p>
+    <div class="hero-badges">
+      <div class="badge"><span>✓</span>Fatty Liver</div>
+      <div class="badge"><span>✓</span>Prediabetes</div>
+      <div class="badge"><span>✓</span>Belly Fat</div>
+      <div class="badge"><span>✓</span>Hypothyroidism</div>
+      <div class="badge"><span>✓</span>Low Energy</div>
+    </div>
+    <div class="cta-wrap">
+      <a href="#book-call" class="cta-btn">Book Your Free Metabolic Health Assessment Call</a>
+      <span class="urgency">⚡ Only a few slots left this week — grab yours before it's gone</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATIONS -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Real People. Real Results.</span>
+    <h2 class="section-title">Transformations Backed by Results, Not Guesswork.</h2>
+    <p class="section-sub">Actual clients. Actual progress. Real markers that changed — the same kind of roadmap you'll get on your call.</p>
+
+    <div class="transforms-grid">
+
+      <!-- Client 1 -->
+      <div class="transform-card">
+        <div class="transform-img-placeholder">
+          <span class="icon">📸</span>
+          <span class="label">Add client transformation photo here</span>
+        </div>
+        <div class="transform-body">
+          <div class="transform-name">Sandeep</div>
+          <div class="transform-highlight">Belly Fat + Energy Transformation</div>
+          <div class="metrics">
+            <div class="metric"><span class="metric-label">Weight</span><span class="metric-val">92 kg → 81 kg</span></div>
+            <div class="metric"><span class="metric-label">Waist</span><span class="metric-val">40" → 35"</span></div>
+            <div class="metric"><span class="metric-label">Energy</span><span class="metric-val">Constant fatigue → Focused all day</span></div>
+            <div class="metric"><span class="metric-label">Sleep</span><span class="metric-val">Disrupted → 7–8 hrs solid</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Client 2 -->
+      <div class="transform-card">
+        <div class="transform-img-placeholder">
+          <span class="icon">📸</span>
+          <span class="label">Add client transformation photo here</span>
+        </div>
+        <div class="transform-body">
+          <div class="transform-name">Subhrakant</div>
+          <div class="transform-highlight">Metabolic Health Reset</div>
+          <div class="metrics">
+            <div class="metric"><span class="metric-label">Weight</span><span class="metric-val">88 kg → 78 kg</span></div>
+            <div class="metric"><span class="metric-label">HbA1c</span><span class="metric-val">6.1% → 5.6%</span></div>
+            <div class="metric"><span class="metric-label">Cholesterol</span><span class="metric-val">Elevated → Normalized</span></div>
+            <div class="metric"><span class="metric-label">Brain Fog</span><span class="metric-val">Daily → Rare</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Client 3 -->
+      <div class="transform-card">
+        <div class="transform-img-placeholder">
+          <span class="icon">📸</span>
+          <span class="label">Add client transformation photo here</span>
+        </div>
+        <div class="transform-body">
+          <div class="transform-name">Client Result</div>
+          <div class="transform-highlight">Prediabetes + Fatty Liver Reversal</div>
+          <div class="metrics">
+            <div class="metric"><span class="metric-label">HbA1c</span><span class="metric-val">6.4% → 5.5%</span></div>
+            <div class="metric"><span class="metric-label">Fatty Liver</span><span class="metric-val">Grade 2 → Grade 0–1</span></div>
+            <div class="metric"><span class="metric-label">LDL</span><span class="metric-val">Reduced significantly</span></div>
+            <div class="metric"><span class="metric-label">BP</span><span class="metric-val">Normalised without meds</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="text-align:center; margin-top:24px; font-size:13px; color:var(--muted);">
+      📌 Replace placeholder cards above with your actual client photos &amp; numbers
+    </p>
+
+    <div class="cta-wrap">
+      <a href="#book-call" class="cta-btn">Book Your Metabolic Health Assessment Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- REALITY CHECK -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Reality Check</span>
+    <h2 class="section-title">Struggling With Any of These?</h2>
+    <p class="section-sub">If you're a working professional sitting 8–10 hours a day, your body is dealing with more than just extra weight.</p>
+
+    <div class="conditions-grid">
+      <div class="condition-card">
+        <div class="condition-name">Stubborn Belly Fat</div>
+        <div class="condition-detail">Clothes feel tight. You avoid photos, social occasions, feel older than your age.</div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-name">Prediabetes / Type 2</div>
+        <div class="condition-detail">HbA1c above 5.7. Worried about becoming diabetic like a parent.</div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-name">Fatty Liver</div>
+        <div class="condition-detail">Grade 1, 2, or 3. Your report shows it but no one told you what to do next.</div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-name">Thyroid Issues</div>
+        <div class="condition-detail">Hypothyroidism making you gain weight, feel sluggish, and struggle to lose fat.</div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-name">Low Energy & Brain Fog</div>
+        <div class="condition-detail">Surviving on chai and coffee. Afternoon crashes. Can't focus during meetings.</div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-name">Inconsistency Loop</div>
+        <div class="condition-detail">Know what to do. Just can't stay consistent with deadlines, travel, and eating out.</div>
+      </div>
+    </div>
+
+    <p style="font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px;">
+      On this assessment call, we'll identify the root causes behind your health challenges and build your personalised roadmap — based on your reports, lifestyle, and real schedule.
+    </p>
+
+    <div class="cta-wrap">
+      <a href="#book-call" class="cta-btn">Book Your Metabolic Health Assessment Call</a>
+      <span class="urgency">⚡ Only a few slots left this week</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">The 45-Minute Call</span>
+    <h2 class="section-title">What Happens in Your Assessment Call</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>Lifestyle Performance Audit</h3>
+          <p>We don't jump straight into diet plans. First, we identify exactly where your energy leaks, stress triggers, recovery gaps, and lifestyle bottlenecks are — so you stop treating symptoms and start fixing the actual cause.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>Your Personalised Metabolic Roadmap</h3>
+          <p>Built around your actual work timings, travel, eating out habits, and daily schedule — not a generic template. Not a YouTube diet. A plan that works when life gets chaotic.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>90-Day Chaos-Proof Action Plan</h3>
+          <p>A structured, practical plan mapped to your lab reports and health goals. Designed to keep working even during deadlines, business dinners, and travel — not just when life is perfect.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <h3>1:1 Guidance — Directly with Jyoti</h3>
+          <p>No junior coaches. No generic responses. Direct, one-on-one guidance from someone who reversed prediabetes himself and has helped 200+ professionals do the same.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 52px;">
+      <div class="price-box">
+        <div class="price-original">Consultation Value: ₹999</div>
+        <div class="price-main">FREE</div>
+        <div class="price-note">For this week only. No obligation to join.</div>
+        <a href="#book-call" class="cta-btn">Reserve Your Free Slot Now</a>
+        <p style="margin-top:14px; font-size:13px; color:var(--muted);">Fully adjusted if you join the program.</p>
+      </div>
+    </div>
+
+    <div class="cta-wrap" style="margin-top: 28px;">
+      <span class="urgency">⚡ Only a few consultation slots left this week</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Is This Right For You?</span>
+    <h2 class="section-title">Who This Assessment Is For</h2>
+
+    <div class="fit-grid">
+      <div class="fit-card yes">
+        <h3>This is for you if…</h3>
+        <ul class="fit-list">
+          <li>You're a working professional or business owner</li>
+          <li>You're 28+ and carrying 80kg+ of body weight</li>
+          <li>You're serious about improving your health, not just losing weight</li>
+          <li>You want a system that fits your actual lifestyle</li>
+          <li>You're ready to follow structured guidance with accountability</li>
+          <li>You're open to investing in expert coaching if it's the right fit</li>
+        </ul>
+      </div>
+      <div class="fit-card no">
+        <h3>This isn't for you if…</h3>
+        <ul class="fit-list">
+          <li>You want a free diet plan to follow on your own</li>
+          <li>You're looking for a magic pill or detox shortcut</li>
+          <li>You're not ready to make any lifestyle changes</li>
+          <li>You want to keep blaming your thyroid or genetics</li>
+          <li>You're not open to investing in professional coaching</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="investment-box">
+      <p style="font-size:13px; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700;">Program Investment</p>
+      <div class="investment-price">₹24,000 – ₹33,000</div>
+      <p style="font-size:14px; color:var(--muted);">For our 1:1 coaching programs, depending on the level of support you need — if we both decide to move forward.</p>
+      <p style="font-size:14px; color:#c0c0c0; margin-top:12px;">No pressure. The assessment call is simply to find out if we're the right fit for each other.</p>
+    </div>
+
+    <div class="cta-wrap">
+      <a href="#book-call" class="cta-btn">Book Your Metabolic Health Assessment Call</a>
+      <span class="urgency">⚡ Only a few consultation slots left this week</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY MOST FAIL -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">The Missing Piece</span>
+    <h2 class="section-title">Why Most Professionals Keep Failing</h2>
+
+    <div class="vs-grid">
+      <div class="vs-col">
+        <h3>What They Try</h3>
+        <ul class="vs-list">
+          <li>Random diets and detox drinks</li>
+          <li>Gym memberships they stop using</li>
+          <li>Keto, intermittent fasting, crash diets</li>
+          <li>Fat burners and supplements</li>
+          <li>YouTube workouts with no progression</li>
+          <li>Instagram influencer plans</li>
+        </ul>
+      </div>
+      <div class="vs-sep">VS</div>
+      <div class="vs-col right">
+        <h3>What They Actually Need</h3>
+        <ul class="vs-list">
+          <li>A system built for their real work schedule</li>
+          <li>Sleep, stress & recovery fixed first</li>
+          <li>Nutrition using familiar Indian foods</li>
+          <li>Metabolic health addressed at the root</li>
+          <li>Consistent accountability and check-ins</li>
+          <li>A plan that works during deadlines & travel</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px; font-size: 16px; font-weight: 600; color: var(--white); text-align:center; max-width: 600px; margin-left:auto; margin-right:auto; line-height: 1.6;">
+      "You don't lack discipline. Your current plan was never designed for your work schedule, health condition, and lifestyle."
+    </p>
+  </div>
+</section>
+
+<!-- COACH BIO -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Your Coach</span>
+    <h2 class="section-title">Meet Jyoti Ranjan Naik</h2>
+
+    <div class="coach-grid">
+      <div class="coach-photo">
+        <span class="icon">🧑‍💼</span>
+        <span style="font-size:13px; color:var(--muted); text-align:center; padding:0 16px;">Add your professional photo here</span>
+      </div>
+      <div>
+        <p style="font-size: 15px; color: #c0c0c0; margin-bottom: 16px; line-height:1.7;">
+          Evidence-based Fitness & Nutrition Coach helping busy working men (28+) lose belly fat, reverse metabolic issues, and reclaim their energy — without extreme diets or living in the gym.
+        </p>
+        <div class="coach-creds">
+          <div class="cred">INFS Certified Fitness & Nutrition Consultant</div>
+          <div class="cred">Contest Prep Certified</div>
+          <div class="cred">Exercise Science Certified</div>
+          <div class="cred">200+ Transformations Delivered</div>
+          <div class="cred">7 Years of Coaching Experience</div>
+          <div class="cred">Former SBI Scale-1 Officer — reversed his own prediabetes</div>
+        </div>
+        <blockquote class="coach-quote">
+          "I don't train people who want a six-pack in 30 days. I coach professionals who want to build a body that matches the career they've worked hard for."
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIS STORY -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">The Story Behind FitOdia</span>
+    <h2 class="section-title">Why I Left a Bank Job to Do This</h2>
+
+    <div class="story-timeline">
+      <div class="story-item">
+        <div class="story-tag before">Before</div>
+        <p class="story-text">
+          For almost 9 years I worked as a <strong>Scale-1 Officer at SBI.</strong> Good salary. Status. Car. Home. Everything a stable career promises. But I was sitting 10–12 hours a day. Long hours, constant targets, deadlines. Despite working out daily, my body started breaking down — forward head posture, winged scapula, chronic neck and back pain. Even sitting for an hour felt uncomfortable.
+        </p>
+      </div>
+      <div class="story-item">
+        <div class="story-tag turning">Turning Point</div>
+        <p class="story-text">
+          During a routine office health check-up, I found out I was <strong>prediabetic.</strong> That hit hard. I always thought I was "the healthy guy." That night I kept thinking — if my health keeps declining, who will take care of my family? The next day, I reached out to a coach I trusted. That decision changed everything.
+        </p>
+      </div>
+      <div class="story-item">
+        <div class="story-tag after">After</div>
+        <p class="story-text">
+          Over the next six months, I went from <strong>85 kg to 70 kg.</strong> Reversed my prediabetes. My neck and back pain improved significantly. And the biggest surprise? It didn't require extreme workouts — just four focused hours a week and simple, sustainable nutrition. In 2021, I left banking and stepped into coaching full-time. Not for the money. Because helping people fix their health felt more meaningful than anything I'd ever done at a desk.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COST OF WAITING -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">The Cost of Waiting</span>
+    <h2 class="section-title">What Happens If You Don't Fix Things Now?</h2>
+
+    <div class="waiting-list">
+      <div class="waiting-item">Fatty liver progresses to Grade 2 or 3</div>
+      <div class="waiting-item">Prediabetes becomes Type 2 diabetes</div>
+      <div class="waiting-item">Belly fat worsens despite "trying harder"</div>
+      <div class="waiting-item">Energy and focus continue to drop</div>
+      <div class="waiting-item">Brain fog affects your work performance</div>
+      <div class="waiting-item">Testosterone drops, confidence drops</div>
+      <div class="waiting-item">Medical expenses start piling up</div>
+      <div class="waiting-item">Family time gets crowded out by fatigue</div>
+    </div>
+
+    <p style="font-size:16px; font-weight:600; color:var(--white); margin-bottom:24px;">
+      The professionals I work with aren't lazy. They're just running a system that was never designed for their workload. That's exactly what we fix on the call.
+    </p>
+
+    <div class="cta-wrap">
+      <a href="#book-call" class="cta-btn">Book Your Metabolic Health Assessment Call</a>
+      <span class="urgency">⚡ Only a few consultation slots left this week</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Common Questions</span>
+    <h2 class="section-title">Questions You Might Have</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">I've tried diets before and always bounced back. How is this different?</div>
+        <div class="faq-a">Most diets fail because they're designed for ideal conditions — not for someone with deadlines, client dinners, and travel. The Last Reset Method builds around your actual life, not a fantasy schedule. The focus is on a flexible system with accountability, so you stop restarting and start maintaining.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">I have a fatty liver and prediabetes. Can coaching help me?</div>
+        <div class="faq-a">Yes — with an important note. Coaching supports nutrition, exercise, sleep, and consistency. Medical conditions like fatty liver and prediabetes should also be monitored by a qualified doctor. What we do is build the practical lifestyle system around your medical care, not replace it. Many clients see meaningful improvements in their markers within 90 days.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Will I have to give up Indian food — rice, roti, chai?</div>
+        <div class="faq-a">Absolutely not. This program is built around practical Indian nutrition. Rice, roti, and familiar Odia and Indian foods are part of the plan — portions, timing, and protein balance matter more than eliminating your staples. You don't need expensive supplements or imported foods.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">I barely have time. Will I need to spend hours in the gym?</div>
+        <div class="faq-a">No. The Chaos-Proof Fitness System is built for real life. Four focused hours a week is enough to create real progress — even when work and family take priority. Short sessions, walking breaks, and smart training beats long inconsistent workouts every time.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What happens after the call?</div>
+        <div class="faq-a">On the call, we'll analyze your health background, lifestyle, and goals, and build a personalised roadmap for the next 90 days. If we're a good fit and you want to move forward with coaching, we'll discuss the program. There's zero obligation to join — the call is genuinely an assessment, not a pressure pitch.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How much does the coaching program cost?</div>
+        <div class="faq-a">Our 1:1 programs range from ₹24,000 to ₹33,000 depending on the level of support required. The assessment call is free and designed to help both of us understand whether it's the right fit before any investment is made.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" id="book-call">
+  <div class="container">
+    <div class="final-banner">
+      <div class="seats-counter">🔴 21 SLOTS LEFT THIS WEEK</div>
+      <h2>You Don't Need Another Diet Plan.</h2>
+      <p>You need a system built around your work life, your health reports, and your real schedule — so your energy, sleep, and focus actually stay strong.</p>
+      <p style="color: #c0c0c0; font-size:15px; margin-bottom:28px;">No starving. No gym marathons. No sacrificing client dinners or family events.</p>
+      <a href="#" class="cta-btn" style="max-width:480px; font-size:16px; padding:20px 36px;">Book Your Free Metabolic Assessment Call Now</a>
+      <p style="margin-top:16px; font-size:13px; color:var(--muted);">100% free · No obligation · 45 minutes · 1:1 with Jyoti</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p style="font-size:16px; font-weight:700; color:var(--white); margin-bottom:8px;">@getleanbyjyoti · FitOdia</p>
+    <p>Built by Jyoti Ranjan Naik · INFS Certified Fitness & Nutrition Coach</p>
+    <p style="margin-top:12px; font-size:12px;">Coaching supports nutrition, exercise, sleep, and consistency. Fatty liver, prediabetes, and hypothyroidism should be monitored by a qualified healthcare professional. Coaching does not replace medical treatment.</p>
+  </div>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar">
+  <span class="s-note">🔴 21 slots left</span>
+  <a href="#book-call" class="cta-btn">Book Free Assessment Call</a>
+</div>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Seats countdown — simple animated decrement over time
+  let seats = 21;
+  const seatEls = document.querySelectorAll('.seats-counter');
+  const stickyNote = document.querySelector('.sticky-bar .s-note');
+  setInterval(() => {
+    if (seats > 14 && Math.random() < 0.15) {
+      seats--;
+      seatEls.forEach(el => el.textContent = `🔴 ${seats} SLOTS LEFT THIS WEEK`);
+      if (stickyNote) stickyNote.textContent = `🔴 ${seats} slots left`;
+    }
+  }, 45000);
+</script>
+
+</body>
+</html>
